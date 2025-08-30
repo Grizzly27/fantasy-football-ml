@@ -397,6 +397,31 @@ document.querySelectorAll('.position-tab').forEach(b=>b.addEventListener('click'
 
 searchInput.addEventListener('input',e=>{search = e.target.value.toLowerCase(); render();});
 
+// Sorting event handlers
+primarySortSelect.addEventListener('change', () => {
+  currentSort = primarySortSelect.value;
+  render();
+});
+
+secondarySortSelect.addEventListener('change', () => {
+  currentSecondarySort = secondarySortSelect.value;
+  render();
+});
+
+sortAsc.addEventListener('click', () => {
+  sortAscending = true;
+  sortAsc.classList.add('active');
+  sortDesc.classList.remove('active');
+  render();
+});
+
+sortDesc.addEventListener('click', () => {
+  sortAscending = false;
+  sortDesc.classList.add('active');
+  sortAsc.classList.remove('active');
+  render();
+});
+
 // init
 loadData();
 
