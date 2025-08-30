@@ -1,0 +1,10 @@
+{
+  "name": "fantasy-draft-assistant",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "serve -s . -l 8000"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

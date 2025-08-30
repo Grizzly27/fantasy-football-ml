@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fantasy Draft Assistant</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navigation">
+    <div class="nav-container">
+      <div class="nav-title">
+        <h1>Fantasy Draft</h1>
+        <div class="model-indicator">
+          <span class="ml-badge">Machine Learning</span>
+          <span class="accuracy-display" id="modelAccuracy">Ensemble RMSE: 3.02</span>
+        </div>
+      </div>
+      
+      <div class="nav-actions">
+        <div class="search-container">
+          <input id="searchInput" type="search" placeholder="Search players" aria-label="Search players" />
+          <div class="search-icon">⌘</div>
+        </div>
+        <button id="undoBtn" class="action-button secondary" title="Undo last draft">
+          <span class="action-icon">↶</span>
+          <span class="action-text">Undo</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <section class="hero-section">
+      <div class="hero-content">
+        <h2 class="hero-title">Make your next pick</h2>
+        <p class="hero-subtitle">AI-powered recommendations to dominate your fantasy draft</p>
+        <div class="stats-overview">
+          <div class="stat-pill">
+            <span class="stat-value" id="playersRemaining">--</span>
+            <span class="stat-label">Available</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-value" id="draftedCount">0</span>
+            <span class="stat-label">Drafted</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-value" id="lastUpdated">--</span>
+            <span class="stat-label">Last Updated</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="filter-section">
+      <div class="filter-container">
+        <div class="position-filters" role="toolbar" aria-label="Position filters">
+          <button class="position-tab active" data-pos="ALL">All Positions</button>
+          <button class="position-tab" data-pos="QB">Quarterback</button>
+          <button class="position-tab" data-pos="RB">Running Back</button>
+          <button class="position-tab" data-pos="WR">Wide Receiver</button>
+          <button class="position-tab" data-pos="TE">Tight End</button>
+          <button class="position-tab" data-pos="DEF">Defense</button>
+          <button class="position-tab" data-pos="K">Kicker</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="sorting-section">
+      <div class="sort-container">
+        <div class="sort-group">
+          <label for="primarySort" class="sort-label">Sort by:</label>
+          <select id="primarySort" class="sort-select">
+            <option value="score">ML Score</option>
+            <option value="proj">Projected PPG</option>
+            <option value="adp">Average Draft Position</option>
+            <option value="team">Team</option>
+            <option value="pos">Position</option>
+            <option value="consistency_rating">Consistency</option>
+            <option value="ceiling_projection">Upside</option>
+            <option value="age">Age</option>
+            <option value="experience">Experience</option>
+          </select>
+        </div>
+        
+        <div class="sort-direction">
+          <button id="sortDesc" class="sort-btn active" title="Descending">↓</button>
+          <button id="sortAsc" class="sort-btn" title="Ascending">↑</button>
+        </div>
+        
+        <div class="sort-group">
+          <label for="secondarySort" class="sort-label">Then by:</label>
+          <select id="secondarySort" class="sort-select">
+            <option value="">None</option>
+            <option value="proj">Projected PPG</option>
+            <option value="consistency_rating">Consistency</option>
+            <option value="adp">ADP</option>
+            <option value="age">Age</option>
+            <option value="ceiling_projection">Upside</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <section class="players-section">
+      <div id="playersList" class="players-grid" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>Fantasy Draft Assistant • Powered by Machine Learning • Made for Champions</p>
+    </div>
+  </footer>
+
+  <script src="team-logos.js"></script>
+  <script src="app.js" type="module"></script>
+</body>
+</html>
